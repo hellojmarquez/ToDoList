@@ -4,27 +4,37 @@ import List from './components/List';
 import TaskDone from './components/TaskDone';
 import ToDoTask from './components/ToDoTask';
 
+const initialValue = () => {
+	const saved = localStorage.getItem('tareas');
+	const savedParse = JSON.parse(saved);
+	return savedParse || '';
+};
 function App() {
-	const [Tasks, setTasks] = useState(() => {
-		const saved = localStorage.getItem('tareas');
-		const initialValue = JSON.parse(saved);
-		return initialValue || '';
-	});
-	const [itemId, setItemId] = useState(null)
-	const handleDelete = id => {
-		console.log(itemId)
+	const [tasks, setTasks] = useState(initialValue);
+	const [itemId, setItemId] = useState(null);
+	const handleDelete = () => {
+		let isDelete = window.confirm(`¿Deseas eliminar ta tarea con ID{itemId}?`);
+		if (isDelete) {
+			let newD = tasks.filter(el => el.id !== itemId);
+			setTasks(newD);
+		} else return;
 	};
 
 	return (
 		<>
-			<List Tasks={Tasks} setTasks={setTasks} />
+			<List tasks={tasks} setTasks={setTasks} />
 			<h2>Tareas pendientes</h2>
 
 			<form id="form">
 				<input type="button" value="borrar" onClick={handleDelete} />
-				{Tasks.length > 0 ? (
-					Tasks.map(el => (
-						<ToDoTask key={el.id} el={el} itemId={itemId} setItemId={setItemId} />
+				{tasks.length > 0 ? (
+					tasks.map(el => (
+						<ToDoTask
+							key={el.id}
+							el={el}
+							itemId={itemId}
+							setItemId={setItemId}
+						/>
 					))
 				) : (
 					<p>Sin tareas</p>

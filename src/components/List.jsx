@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
-const List = ({ Tasks, setTasks }) => {
-	console.log('tareas', Tasks);
+const List = ({ tasks, setTasks }) => {
+	// console.log('tareas', tasks);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -10,14 +10,14 @@ const List = ({ Tasks, setTasks }) => {
 			nam: e.target.taskText.value,
 		};
 
-		setTasks(Tasks => [...Tasks, { id: data.id, nam: data.nam }]);
+		setTasks(tasks => [...tasks, data]);
 
 		e.target.reset();
 	};
 
 	useEffect(() => {
-		localStorage.setItem('tareas', JSON.stringify(Tasks));
-	}, [Tasks]);
+		localStorage.setItem('tareas', JSON.stringify(tasks));
+	}, [tasks]);
 
 	return (
 		<>
