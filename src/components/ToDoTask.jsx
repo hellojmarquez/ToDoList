@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ToDoTask = ({ el, setItemId, itemId }) => {
+	
 	const { id, nam } = el;
 	let handlecheck = e => {
 		setItemId(id);
