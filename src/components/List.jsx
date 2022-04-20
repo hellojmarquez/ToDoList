@@ -3,31 +3,40 @@ import React, { useEffect } from 'react';
 const List = ({ tasks, setTasks, itemId }) => {
 	const handleSubmit = e => {
 		e.preventDefault();
-		let findData = tasks.find(el => el.id === itemId);
-		if (findData) {
-			let data = {
-				id: findData.id,
-				nam: e.target.taskText.value,
-			};
-			console.log(data);
-			let editedTask = tasks.map(u => (u.id !== data.id ? u : data));
-			console.log(editedTask);
-
-			setTasks(editedTask);
-			console.log('editar');
+		let textValue = e.target.taskText.value;
+		if (textValue === '') {
+			window.alert('mensaje vacio');
+			return;
 		} else {
-			const data = {
-				id: Date.now(),
-				nam: e.target.taskText.value,
-			};
+			let trimText = textValue.trim();
+			console.log(trimText);
+			let capitaltext = trimText.charAt(0).toUpperCase() + trimText.slice(1);
+			console.log(capitaltext);
+			let findData = tasks.find(el => el.id === itemId);
+			if (findData) {
+				//funcion editar
+				let data = {
+					id: findData.id,
+					nam: capitaltext,
+				};
+				console.log(data);
+				let editedTask = tasks.map(u => (u.id !== data.id ? u : data));
+				console.log(editedTask);
 
-			setTasks(tasks => [...tasks, data]);
-			// return;
-			console.log('crear');
-			// return;
+				setTasks(editedTask);
+				console.log('editar');
+			} else {
+				//funciuon agregar
+				const data = {
+					id: Date.now(),
+					nam: capitaltext,
+				};
+				setTasks(tasks => [...tasks, data]);
+				console.log(data);
+			}
+
+			location.reload();
 		}
-
-		location.reload();
 	};
 
 	useEffect(() => {

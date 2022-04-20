@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const ToDoTask = ({ el, setItemId, itemId }) => {
-	
+const ToDoTask = ({
+	el,
+	setItemId,
+	taskDone,
+	setTaskDone,
+	tasks,
+	setTasks,
+}) => {
 	const { id, nam } = el;
-	let handlecheck = e => {
+	const handlecheck = () => {
 		setItemId(id);
 	};
+	const handleComplete = () => {
+		// let taskId = e.target.previousSibling.previousSibling.value;
+		let completedTask = tasks.filter(ele => ele.id === el.id);
+		let completedTaskDone = tasks.filter(ele => ele.id !== el.id);
+		if(completedTask){
+			setTasks(completedTaskDone)
+			// console.log(completedTask)
+
+			setTaskDone(taskDone=>[...taskDone, completedTask]);
+			
+		}
+		// console.log(completedTask)
+		// setTasks(completedTask);
+		// console.log(completedTask)
+	};
+	useEffect(() => {
+		localStorage.setItem('tareasCompletadas', JSON.stringify(taskDone));
+		// localStorage.setItem('tareas', JSON.stringify(tasks));
+		console.log(taskDone);
+	}, [taskDone]);
 	return (
 		<>
 			<input
@@ -16,6 +42,7 @@ const ToDoTask = ({ el, setItemId, itemId }) => {
 				onChange={handlecheck}
 			/>
 			<label>{nam}</label>
+			<input type="button" value="completar" onClick={handleComplete} />
 			<br></br>
 		</>
 	);
