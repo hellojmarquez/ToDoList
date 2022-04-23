@@ -9,7 +9,6 @@ const ToDoTask = ({
 	tasks,
 	setTasks,
 }) => {
-	console.log(el)
 	const { id, nam } = el;
 	const handlecheck = () => {
 		setItemId(id);
@@ -17,7 +16,6 @@ const ToDoTask = ({
 	const handleComplete = () => {
 		const setData = async () => {
 			if (tasks.length >= 2) {
-				console.log('distinto a 1');
 				let completedTask = tasks.filter(ele => ele.id === el.id);
 				let completedTaskDone = tasks.filter(ele => ele.id !== el.id);
 				if (completedTask) {
@@ -34,7 +32,6 @@ const ToDoTask = ({
 	};
 	useEffect(() => {
 		localStorage.setItem('tareasCompletadas', JSON.stringify(taskDone));
-		console.log('tarea realizada');
 	}, [taskDone]);
 	return (
 		<>

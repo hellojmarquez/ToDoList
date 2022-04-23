@@ -14,7 +14,7 @@ const initialValueTaskDone = () => {
 	const taskDoneParsed = JSON.parse(taskDoneSaves);
 	return taskDoneParsed || [];
 };
-let a = 2
+let a = 2;
 function App() {
 	const [tasks, setTasks] = useState(initialValue);
 	const [taskDone, setTaskDone] = useState(initialValueTaskDone);
@@ -38,12 +38,10 @@ function App() {
 			console.log(itemId);
 		}
 	};
-	// console.log(tasks.length)
 	return (
 		<>
 			<List tasks={tasks} setTasks={setTasks} itemId={itemId} />
 			<h2>Tareas pendientes</h2>
-
 			<form id="form">
 				<input type="button" value="borrar" onClick={handleDelete} />
 				<input type="button" value="editar" onClick={handleEdit} />
@@ -66,19 +64,18 @@ function App() {
 			</form>
 			<h2>Tareas Completadas</h2>
 			<form id="taskDoneForm">
-			
 				{taskDone.length > 0 ? (
 					taskDone.map(el => (
-
 						<TaskDone
 							key={el[0].id}
 							el={el}
-							// taskDone={taskDone}
-							// setTaskDone={setTaskDone}
+							taskDone={taskDone}
+							setTaskDone={setTaskDone}
+							itemId={itemId}
 						/>
 					))
 				) : (
-					<p>Sin tareas</p>
+					<p>Sin tareas completadas</p>
 				)}
 			</form>
 		</>
