@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+
 
 const ToDoTask = ({
 	el,
@@ -8,29 +9,32 @@ const ToDoTask = ({
 	tasks,
 	setTasks,
 }) => {
+	console.log(el)
 	const { id, nam } = el;
 	const handlecheck = () => {
 		setItemId(id);
 	};
 	const handleComplete = () => {
-		// let taskId = e.target.previousSibling.previousSibling.value;
-		let completedTask = tasks.filter(ele => ele.id === el.id);
-		let completedTaskDone = tasks.filter(ele => ele.id !== el.id);
-		if(completedTask){
-			setTasks(completedTaskDone)
-			// console.log(completedTask)
-
-			setTaskDone(taskDone=>[...taskDone, completedTask]);
-			
-		}
-		// console.log(completedTask)
-		// setTasks(completedTask);
-		// console.log(completedTask)
+		const setData = async () => {
+			if (tasks.length >= 2) {
+				console.log('distinto a 1');
+				let completedTask = tasks.filter(ele => ele.id === el.id);
+				let completedTaskDone = tasks.filter(ele => ele.id !== el.id);
+				if (completedTask) {
+					setTasks(completedTaskDone);
+					setTaskDone(taskDone => [...taskDone, completedTask]);
+				}
+			} else {
+				let lastTask = tasks.filter(ele => ele.id === el.id);
+				await setTaskDone(taskDone => [...taskDone, lastTask]);
+				await setTasks([]);
+			}
+		};
+		setData();
 	};
 	useEffect(() => {
 		localStorage.setItem('tareasCompletadas', JSON.stringify(taskDone));
-		// localStorage.setItem('tareas', JSON.stringify(tasks));
-		console.log(taskDone);
+		console.log('tarea realizada');
 	}, [taskDone]);
 	return (
 		<>

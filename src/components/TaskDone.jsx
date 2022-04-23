@@ -1,13 +1,12 @@
 import React from 'react';
 
-const TaskDone = () => {
+const TaskDone = ({ el }) => {
+	console.log(el);
 	return (
 		<>
-			<h2>Tareas Completadas</h2>
-			<form id="taskDoneForm">
-				<input type="checkbox" />
-				<label>tarea</label>
-			</form>
+			<input type="checkbox"/>
+			<label>{el[0].nam}</label>
+			<br></br>
 		</>
 	);
 };
