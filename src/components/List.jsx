@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const List = ({ tasks, setTasks, itemId }) => {
+const List = ({ tasks, setTasks, itemId, handleDelete, handleEdit }) => {
 	const handleSubmit = e => {
 		e.preventDefault();
 		let textValue = e.target.taskText.value;
@@ -10,12 +10,13 @@ const List = ({ tasks, setTasks, itemId }) => {
 		} else {
 			let trimText = textValue.trim();
 			let capitaltext = trimText.charAt(0).toUpperCase() + trimText.slice(1);
+			let completeText=  "*"+capitaltext
 			let findData = tasks.find(el => el.id === itemId);
 			if (findData) {
 				//funcion editar
 				let data = {
 					id: findData.id,
-					nam: capitaltext,
+					nam: completeText,
 				};
 				let editedTask = tasks.map(u => (u.id !== data.id ? u : data));
 				setTasks(editedTask);
@@ -23,7 +24,7 @@ const List = ({ tasks, setTasks, itemId }) => {
 				//funciuon agregar
 				const data = {
 					id: Date.now(),
-					nam: capitaltext,
+					nam: completeText,
 				};
 				setTasks(tasks => [...tasks, data]);
 			}
@@ -38,9 +39,9 @@ const List = ({ tasks, setTasks, itemId }) => {
 
 	return (
 		<>
-			<h1>TO-DO-LIST</h1>
+			<h1 className='title'>To-Do-List</h1>
 			<form id="taskForm" onSubmit={handleSubmit}>
-				<label htmlFor="taskText">Agregar tarea</label>
+				<label htmlFor="taskText" className='taskText'>Agregar tarea</label>
 				<input
 					type="text"
 					name="taskText"
@@ -48,6 +49,8 @@ const List = ({ tasks, setTasks, itemId }) => {
 					placeholder="Insertar tarea"
 				/>
 				<input type="submit" name="" id="" value="Enviar" />
+				<input type="button" value="borrar" onClick={handleDelete} />
+				<input type="button" value="editar" onClick={handleEdit} />
 			</form>
 		</>
 	);

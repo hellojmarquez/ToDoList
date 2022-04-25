@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-
 const ToDoTask = ({
 	el,
 	setItemId,
@@ -34,18 +33,19 @@ const ToDoTask = ({
 		localStorage.setItem('tareasCompletadas', JSON.stringify(taskDone));
 	}, [taskDone]);
 	return (
-		<>
-			<input
-				type="checkbox"
-				name="tarea"
-				id="box"
-				value={id}
-				onChange={handlecheck}
-			/>
-			<label>{nam}</label>
+		<div className='f1'>
+			<div>
+				<input
+					type="checkbox"
+					name="tarea"
+					id="box"
+					value={id}
+					onChange={handlecheck}
+				/>
+				<label className="--pending">{nam}</label>
+			</div>
 			<input type="button" value="completar" onClick={handleComplete} />
-			<br></br>
-		</>
+		</div>
 	);
 };
 

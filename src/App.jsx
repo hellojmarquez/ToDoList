@@ -39,46 +39,54 @@ function App() {
 		}
 	};
 	return (
-		<>
-			<List tasks={tasks} setTasks={setTasks} itemId={itemId} />
-			<h2>Tareas pendientes</h2>
-			<form id="form">
-				<input type="button" value="borrar" onClick={handleDelete} />
-				<input type="button" value="editar" onClick={handleEdit} />
-				{tasks.length > 0 ? (
-					tasks.map(el => (
-						<ToDoTask
-							key={el.id}
-							el={el}
-							itemId={itemId}
-							setItemId={setItemId}
-							taskDone={taskDone}
-							setTaskDone={setTaskDone}
-							tasks={tasks}
-							setTasks={setTasks}
-						/>
-					))
-				) : (
-					<p>Sin tareas pendientes</p>
-				)}
-			</form>
-			<h2>Tareas Completadas</h2>
-			<form id="taskDoneForm">
-				{taskDone.length > 0 ? (
-					taskDone.map(el => (
-						<TaskDone
-							key={el[0].id}
-							el={el}
-							taskDone={taskDone}
-							setTaskDone={setTaskDone}
-							itemId={itemId}
-						/>
-					))
-				) : (
-					<p>Sin tareas completadas</p>
-				)}
-			</form>
-		</>
+		<div className="container">
+			<List
+				tasks={tasks}
+				setTasks={setTasks}
+				itemId={itemId}
+				handleDelete={handleDelete}
+				handleEdit={handleEdit}
+			/>
+			<div className='form1'>
+				<h2 className="taskList --pending">Tareas pendientes</h2>
+				<form id="form">
+					{tasks.length > 0 ? (
+						tasks.map(el => (
+							<ToDoTask
+								key={el.id}
+								el={el}
+								itemId={itemId}
+								setItemId={setItemId}
+								taskDone={taskDone}
+								setTaskDone={setTaskDone}
+								tasks={tasks}
+								setTasks={setTasks}
+							/>
+						))
+					) : (
+						<p>Sin tareas pendientes</p>
+					)}
+				</form>
+			</div>
+			<div className="form2">
+				<h2 className="taskList --done">Tareas Completadas</h2>
+				<form id="taskDoneForm">
+					{taskDone.length > 0 ? (
+						taskDone.map(el => (
+							<TaskDone
+								key={el[0].id}
+								el={el}
+								taskDone={taskDone}
+								setTaskDone={setTaskDone}
+								itemId={itemId}
+							/>
+						))
+					) : (
+						<p>Sin tareas completadas</p>
+					)}
+				</form>
+			</div>
+		</div>
 	);
 }
 

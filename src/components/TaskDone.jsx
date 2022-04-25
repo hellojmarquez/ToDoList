@@ -18,7 +18,7 @@ const TaskDone = ({ el,taskDone, setTaskDone, itemId }) => {
 	return (
 		<>
 			{/* <input type="checkbox"/> */}
-			<label>{el[0].nam}</label>
+			<label className='--done'>{el[0].nam}</label>
 			<input type="button" value="borrar" onClick={handleDel}/>
 			<br></br>
 		</>
