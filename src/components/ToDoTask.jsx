@@ -33,8 +33,8 @@ const ToDoTask = ({
 		localStorage.setItem('tareasCompletadas', JSON.stringify(taskDone));
 	}, [taskDone]);
 	return (
-		<div className='f1'>
-			<div>
+		<div className="toDoFormTask">
+			<div className='toDoFormTask-item'>
 				<input
 					type="checkbox"
 					name="tarea"
@@ -44,7 +44,12 @@ const ToDoTask = ({
 				/>
 				<label className="--pending">{nam}</label>
 			</div>
-			<input type="button" value="completar" onClick={handleComplete} />
+			<input
+				type="button"
+				value="completar"
+				onClick={handleComplete}
+				className="toDoForm-btn"
+			/>
 		</div>
 	);
 };

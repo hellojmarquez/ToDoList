@@ -10,7 +10,7 @@ const List = ({ tasks, setTasks, itemId, handleDelete, handleEdit }) => {
 		} else {
 			let trimText = textValue.trim();
 			let capitaltext = trimText.charAt(0).toUpperCase() + trimText.slice(1);
-			let completeText=  "*"+capitaltext
+			let completeText = '*' + capitaltext;
 			let findData = tasks.find(el => el.id === itemId);
 			if (findData) {
 				//funcion editar
@@ -38,10 +38,12 @@ const List = ({ tasks, setTasks, itemId, handleDelete, handleEdit }) => {
 	}, [tasks]);
 
 	return (
-		<>
-			<h1 className='title'>To-Do-List</h1>
-			<form id="taskForm" onSubmit={handleSubmit}>
-				<label htmlFor="taskText" className='taskText'>Agregar tarea</label>
+		<form id="taskForm" className="taskForm" onSubmit={handleSubmit}>
+			<h1 className="taskForm-title">To-Do-List</h1>
+			<div className="taskForm-insertTask">
+				<label htmlFor="taskText" className="taskForm-text">
+					Agregar tarea
+				</label>
 				<input
 					type="text"
 					name="taskText"
@@ -49,10 +51,10 @@ const List = ({ tasks, setTasks, itemId, handleDelete, handleEdit }) => {
 					placeholder="Insertar tarea"
 				/>
 				<input type="submit" name="" id="" value="Enviar" />
-				<input type="button" value="borrar" onClick={handleDelete} />
-				<input type="button" value="editar" onClick={handleEdit} />
-			</form>
-		</>
+			</div>
+			<input type="button" value="borrar" onClick={handleDelete} className="taskForm-btn" />
+			<input type="button" value="editar" onClick={handleEdit} className="taskForm-btn"/>
+		</form>
 	);
 };
 

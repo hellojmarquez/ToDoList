@@ -47,45 +47,41 @@ function App() {
 				handleDelete={handleDelete}
 				handleEdit={handleEdit}
 			/>
-			<div className='form1'>
-				<h2 className="taskList --pending">Tareas pendientes</h2>
-				<form id="form">
-					{tasks.length > 0 ? (
-						tasks.map(el => (
-							<ToDoTask
-								key={el.id}
-								el={el}
-								itemId={itemId}
-								setItemId={setItemId}
-								taskDone={taskDone}
-								setTaskDone={setTaskDone}
-								tasks={tasks}
-								setTasks={setTasks}
-							/>
-						))
-					) : (
-						<p>Sin tareas pendientes</p>
-					)}
-				</form>
-			</div>
-			<div className="form2">
+			<form id="form" className="toDoForm">
+				{/* <h2 className="taskList --pending">Tareas pendientes</h2> */}
+				{tasks.length > 0 ? (
+					tasks.map(el => (
+						<ToDoTask
+							key={el.id}
+							el={el}
+							itemId={itemId}
+							setItemId={setItemId}
+							taskDone={taskDone}
+							setTaskDone={setTaskDone}
+							tasks={tasks}
+							setTasks={setTasks}
+						/>
+					))
+				) : (
+					<p>Sin tareas pendientes</p>
+				)}
+			</form>
+			<form id="taskDoneForm" className="taskDoneForm">
 				<h2 className="taskList --done">Tareas Completadas</h2>
-				<form id="taskDoneForm">
-					{taskDone.length > 0 ? (
-						taskDone.map(el => (
-							<TaskDone
-								key={el[0].id}
-								el={el}
-								taskDone={taskDone}
-								setTaskDone={setTaskDone}
-								itemId={itemId}
-							/>
-						))
-					) : (
-						<p>Sin tareas completadas</p>
-					)}
-				</form>
-			</div>
+				{taskDone.length > 0 ? (
+					taskDone.map(el => (
+						<TaskDone
+							key={el[0].id}
+							el={el}
+							taskDone={taskDone}
+							setTaskDone={setTaskDone}
+							itemId={itemId}
+						/>
+					))
+				) : (
+					<p>Sin tareas completadas</p>
+				)}
+			</form>
 		</div>
 	);
 }

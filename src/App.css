@@ -3,25 +3,53 @@ body {
 	background-color: rgb(245, 247, 248);
 	font-family: 'Kalam', cursive;
 }
-.container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
 }
-.form1{
-  /* background-color: blueviolet; */
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  /* justify-content: space-around; */
-  display: inline-flex;
+.taskForm {
+	text-align: center;
+	width: 350px;
 }
-.f1{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 10px;
+
+.taskForm-title {
+	color: rgb(25, 33, 135);
+}
+.taskForm-text {
+	color: #e63838;
+	font-weight: 700;
+}
+.taskForm-insertTask {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 10px;
+}
+.taskForm-btn {
+	width: 60px;
+	margin-right: 10px;
+}
+.toDoForm {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	justify-content: space-between;
+	
+}
+.toDoFormTask{
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+}
+.toDoFormTask-item{
+	display: flex;
+	align-items: center;
+
+}
+.toDoForm-btn{
+	width: 80px;
+	height: 30px;
 }
 
 .title {
@@ -46,22 +74,3 @@ input[type='button'] {
 }
 
 
-.div1 {
-	background-color: black;
-	color: aliceblue;
-	width: 200px;
-	margin: 0;
-	height: 200px;
-}
-.div2 {
-	margin: 0;
-	background-color: red;
-	width: 200px;
-	height: 200px;
-}
-.div3 {
-	margin: 0;
-	background-color: blue;
-	width: 200px;
-	height: 200px;
-}
