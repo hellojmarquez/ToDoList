@@ -10,13 +10,12 @@ const List = ({ tasks, setTasks, itemId, handleDelete, handleEdit }) => {
 		} else {
 			let trimText = textValue.trim();
 			let capitaltext = trimText.charAt(0).toUpperCase() + trimText.slice(1);
-			let completeText = '*' + capitaltext;
 			let findData = tasks.find(el => el.id === itemId);
 			if (findData) {
 				//funcion editar
 				let data = {
 					id: findData.id,
-					nam: completeText,
+					nam: capitaltext,
 				};
 				let editedTask = tasks.map(u => (u.id !== data.id ? u : data));
 				setTasks(editedTask);
@@ -24,7 +23,7 @@ const List = ({ tasks, setTasks, itemId, handleDelete, handleEdit }) => {
 				//funciuon agregar
 				const data = {
 					id: Date.now(),
-					nam: completeText,
+					nam: capitaltext,
 				};
 				setTasks(tasks => [...tasks, data]);
 			}

@@ -48,7 +48,7 @@ function App() {
 				handleEdit={handleEdit}
 			/>
 			<form id="form" className="toDoForm">
-				{/* <h2 className="taskList --pending">Tareas pendientes</h2> */}
+				<h2 className="taskList --pending">Tareas pendientes</h2>
 				{tasks.length > 0 ? (
 					tasks.map(el => (
 						<ToDoTask
