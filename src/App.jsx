@@ -19,36 +19,17 @@ function App() {
 	const [tasks, setTasks] = useState(initialValue);
 	const [taskDone, setTaskDone] = useState(initialValueTaskDone);
 	const [itemId, setItemId] = useState(0);
-	const handleDelete = () => {
-		let isDelete = window.confirm(
-			`¿Deseas eliminar ta tarea con ID ${itemId}?`
-		);
-		if (isDelete) {
-			let newD = tasks.filter(el => el.id !== itemId);
-			setTasks(newD);
-		}
-	};
-	const handleEdit = () => {
-		console.log();
-		let editData = tasks.filter(el => el.id === itemId);
-		let num = editData[0].id;
-		if (tasks.indexOf(num)) {
-			taskForm.taskText.value = editData[0].nam;
-			setItemId(num);
-			console.log(itemId);
-		}
-	};
+
 	return (
 		<div className="container">
 			<List
 				tasks={tasks}
 				setTasks={setTasks}
 				itemId={itemId}
-				handleDelete={handleDelete}
-				handleEdit={handleEdit}
+			
 			/>
-			<form id="form" className="toDoForm">
-				<h2 className="taskList --pending">Tareas pendientes</h2>
+			<form id="form" className="list">
+				<h2 className="list__title --pending">Tareas pendientes</h2>
 				{tasks.length > 0 ? (
 					tasks.map(el => (
 						<ToDoTask
@@ -66,8 +47,8 @@ function App() {
 					<p>Sin tareas pendientes</p>
 				)}
 			</form>
-			<form id="taskDoneForm" className="taskDoneForm">
-				<h2 className="taskList --done">Tareas Completadas</h2>
+			<form id="taskDoneForm" className="list">
+				<h2 className="list__title --done">Tareas Completadas</h2>
 				{taskDone.length > 0 ? (
 					taskDone.map(el => (
 						<TaskDone

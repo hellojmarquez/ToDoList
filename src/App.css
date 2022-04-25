@@ -3,6 +3,7 @@ body {
 	background-color: rgb(245, 247, 248);
 	font-family: 'Kalam', cursive;
 }
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -12,52 +13,51 @@ body {
 .taskForm {
 	text-align: center;
 	width: 350px;
+	display: block;
 }
 
-.taskForm-title {
+.taskForm__title {
 	color: rgb(25, 33, 135);
 }
-.taskForm-text {
+.taskForm__text {
 	color: #e63838;
 	font-weight: 700;
 }
-.taskForm-insertTask {
+.taskForm__insertTask {
 	display: flex;
 	justify-content: space-around;
 	margin-bottom: 10px;
 }
-.taskForm-btn {
+.taskForm__btn {
 	width: 60px;
 	margin-right: 10px;
 }
-.toDoForm {
+.list {
 	display: flex;
 	flex-direction: column;
 	width: 200px;
-	text-align: center;
-	
+	text-align: left;
 }
-.toDoFormTask{
+.list__title {
+	text-align: center;
+	font-weight: 400;
+}
+.list__form {
 	margin-bottom: 10px;
 	display: flex;
 	justify-content: space-between;
 }
-.toDoFormTask-item{
+.list__item {
 	display: flex;
 	align-items: center;
-
 }
-.toDoForm-btn{
+.list__btn {
 	width: 80px;
 	height: 30px;
 }
 
-.title {
-	color: rgb(25, 33, 135);
-	font-weight: 700;
-}
 .taskText {
-	color: red;
+	color: rgb(121, 21, 21);
 	font-weight: 700;
 }
 .taskList {
@@ -69,8 +69,31 @@ body {
 .--done {
 	color: #24950b;
 }
-input[type='button'] {
+input[type='button'],
+input[type='submit'] {
 	color: rgb(2, 24, 99);
+	background-color: #ffffff;
+	border: 1px solid rgb(41, 41, 41);
 }
-
-
+@media screen and (min-width: 769px) {
+	.container {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 15px;
+		flex-wrap: wrap;
+	}
+	.taskForm {
+		text-align: center;
+		width: 100%;
+	}
+	.taskForm__insertTask {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 10px;
+	}
+	.taskForm__text,
+	.taskForm__input {
+		margin-right: 10px;
+	}
+}
