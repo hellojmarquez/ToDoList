@@ -14,7 +14,6 @@ const initialValueTaskDone = () => {
 	const taskDoneParsed = JSON.parse(taskDoneSaves);
 	return taskDoneParsed || [];
 };
-let a = 2;
 function App() {
 	const [tasks, setTasks] = useState(initialValue);
 	const [taskDone, setTaskDone] = useState(initialValueTaskDone);
