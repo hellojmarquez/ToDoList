@@ -352,7 +352,6 @@ template {
 
 /* styling paper */
 #paper {
-	width: 600px;
 	height: 700px;
 	position: relative;
 	margin: 20px auto;
