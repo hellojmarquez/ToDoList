@@ -21,12 +21,7 @@ function App() {
 
 	return (
 		<div className="container">
-			<List
-				tasks={tasks}
-				setTasks={setTasks}
-				itemId={itemId}
-			
-			/>
+			<List tasks={tasks} setTasks={setTasks} itemId={itemId} />
 			<form id="form" className="list">
 				<h2 className="list__title --pending">Tareas pendientes</h2>
 				{tasks.length > 0 ? (
