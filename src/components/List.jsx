@@ -11,13 +11,11 @@ const List = ({ tasks, setTasks, itemId }) => {
 		}
 	};
 	const handleEdit = () => {
-		console.log();
 		let editData = tasks.filter(el => el.id === itemId);
 		let num = editData[0].id;
 		if (tasks.indexOf(num)) {
 			taskForm.taskText.value = editData[0].nam;
 			setItemId(num);
-			console.log(itemId);
 		}
 	};
 	const handleSubmit = e => {
@@ -30,11 +28,8 @@ const List = ({ tasks, setTasks, itemId }) => {
 			let trimText = textValue.trim();
 			let capitaltext = trimText.charAt(0).toUpperCase() + trimText.slice(1);
 			let findData = tasks.find(el => el.id === itemId);
-
 			if (findData) {
-				console.log(findData);
 				//funcion editar
-				console.log('hola');
 				const data = {
 					id: findData.id,
 					nam: capitaltext,
