@@ -20,7 +20,6 @@ body {
 .taskForm {
 	max-width: 90%;
 	text-align: center;
-	background-color: black;
 }
 
 .taskForm__title {
